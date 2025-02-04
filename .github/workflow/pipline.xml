@@ -1,12 +1,12 @@
-name: My First Action In Git
+name: My First Action
 
-on: push
+on: push  # Runs when code is pushed
 
 jobs:
-first-job:
-  runs-on: ubuntu-latest
-  steps:
-    -name: checkout code
-     run: git clone https://github.com/berezovsky13/nodejs.git
-    -name: print name
-     run: echo "hellow github Action"
+  my-job: #Here you put the name of the job
+    runs-on: ubuntu-latest # The CI-CD pipeline will run on Ubuntu
+    steps:
+      - name: Checkout code
+        run: git clone https://github.com/berezovsky13/nodejs.git  # Gets the latest code, in other words it does 'git clone' 
+      - name: Print Hello World
+        run: echo "Hello, GitHub Actions!" # This is just the command
