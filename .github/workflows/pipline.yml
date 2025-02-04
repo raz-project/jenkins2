@@ -11,8 +11,32 @@ jobs:
     steps:
       - name: Checkout code
         run: git clone https://github.com/berezovsky13/nodejs.git # Gets the latest code, in other words it does 'git clone'
+
+      - name: Checkout the nodejs repository
+        uses: actions/checkout@v4
+        with:
+          repository: "berezovsky13/nodejs" # Specific repository URL
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18" # Set to the required Node.js version
+
+      - name: Install Dependencies
+        run: npm install # Install project dependencies
+
+      - name: Build Project (if applicable)
+        run: npm run build # Only if there's a build step (optional)
+
+      - name: Run Tests (if applicable)
+        run: npm test # Runs tests if defined
+
+      - name: Verify Pipeline Success
+        run: echo "Pipeline executed successfully!"
+
       - name: Checkout code To Raz
         run: git clone https://github.com/raz-project/jenkins2.git # Gets the latest code, in other words it does 'git clone'
+
       - name: Checkout code Raz Auto
         uses: actions/checkout@v4 # It just does git clone but for the repo that you are currently using
 
