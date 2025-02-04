@@ -16,6 +16,9 @@ jobs:
       - name: Check DNS Resolution
         run: nslookup google.com
 
+      - name: Ping Google DNS
+        run: ping -c 4 8.8.8.8
+
       - name: List Files and Directories
         run: ls -la # Lists all files and directories in the workspace
 
