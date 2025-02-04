@@ -22,5 +22,9 @@ jobs:
       - name: List Files and Directories
         run: ls -la # Lists all files and directories in the workspace
 
+      - name: Show Israel Date and Time
+        run: |
+          TZ="Asia/Jerusalem" date
+
       - name: Print Hello World
         run: echo "Hello, GitHub Actions!" # This is just the command
