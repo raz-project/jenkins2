@@ -6,7 +6,8 @@ jobs:
   my-new-job: #Here you put the name of the job
     runs-on: ubuntu-latest # The CI-CD pipeline will run on Ubuntu
     env:
-      NUMBER: "121" # Define a number manually
+      NUMBER1: "121" # First number
+      NUMBER2: "111" # Second number # Define a number manually
     steps:
       - name: Checkout code
         run: git clone https://github.com/berezovsky13/nodejs.git # Gets the latest code, in other words it does 'git clone'
@@ -31,7 +32,7 @@ jobs:
 
       - name: Run Palindrome Check
         run: |
-          RESULT=$(python3 test.py "$NUMBER")
+          RESULT=$(NUMBER1=${{ env.NUMBER1 }} NUMBER2=${{ env.NUMBER2 }} python3 test.py)
           echo "RESULT=$RESULT" >> $GITHUB_ENV
         id: palindrome_check
 
