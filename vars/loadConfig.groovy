@@ -1,5 +1,4 @@
-groovy
-CopyEdit
+
 import groovy.json.JsonSlurper
 
 def call(String fileName = 'config.json') {
