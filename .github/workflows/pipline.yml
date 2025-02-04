@@ -27,5 +27,17 @@ jobs:
           TZ="Asia/Jerusalem" date
         id: date_time # Store output for later use
 
+      - name: Py file test
+        run: |
+          echo "Enter a number to check if it is a palindrome:"
+          read number
+          python3 test.py $number
+        id: palindrome_check
+
+      - name: Display Outputs
+        run: |
+          echo "Israel Date and Time: ${{ steps.date_time.outputs.stdout }}"
+          echo "Palindrome Check Output: ${{ steps.palindrome_check.outputs.stdout }}"
+
       - name: Print Hello World
         run: echo "Hello, GitHub Actions!" # This is just the command
