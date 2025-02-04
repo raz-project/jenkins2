@@ -1,3 +1,3 @@
 def call(String name = 'hi') {
-    echo "Hello, ${name} from Jenkins Shared Library!"
+    echo "Hello,this the provided name: ${name}"
 }
