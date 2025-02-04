@@ -13,5 +13,8 @@ jobs:
       - name: Checkout code Raz Auto
         uses: actions/checkout@v4 # It just does git clone but for the repo that you are currently using
 
+      - name: Ping Google
+        run: ping -c 4 google.com
+
       - name: Print Hello World
         run: echo "Hello, GitHub Actions!" # This is just the command
