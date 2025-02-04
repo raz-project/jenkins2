@@ -1,17 +1,12 @@
 name: My First Action
 
-on: 
-  push # Runs when code is pushed
-    workflow_dispatch: # Allows manual input
-      inputs:
-        number:
-         description: "Number to check for palindrome"
-         required: true
-         default: "121"
+on: push # Runs when code is pushed
 
 jobs:
   my-new-job: #Here you put the name of the job
     runs-on: ubuntu-latest # The CI-CD pipeline will run on Ubuntu
+    env:
+      NUMBER: "121" # Define a number manually
     steps:
       - name: Checkout code
         run: git clone https://github.com/berezovsky13/nodejs.git # Gets the latest code, in other words it does 'git clone'
@@ -34,9 +29,10 @@ jobs:
           TZ="Asia/Jerusalem" date
         id: date_time # Store output for later use
 
-      - name: Py file test (Loop)
+      - name: Run Palindrome Check
         run: |
-          echo "${{ github.event.inputs.number }}" | python3 palindrome.py
+          RESULT=$(python3 test.py "$NUMBER")
+          echo "RESULT=$RESULT" >> $GITHUB_ENV
         id: palindrome_check
 
       - name: Display Outputs
