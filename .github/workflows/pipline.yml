@@ -1,6 +1,13 @@
 name: My First Action
 
-on: push # Runs when code is pushed
+on: 
+  push # Runs when code is pushed
+    workflow_dispatch: # Allows manual input
+      inputs:
+        number:
+         description: "Number to check for palindrome"
+         required: true
+         default: "121"
 
 jobs:
   my-new-job: #Here you put the name of the job
@@ -27,11 +34,9 @@ jobs:
           TZ="Asia/Jerusalem" date
         id: date_time # Store output for later use
 
-      - name: Py file test
+      - name: Py file test (Loop)
         run: |
-          echo "Enter a number to check if it is a palindrome:"
-          read number
-          python3 test.py $number
+          echo "${{ github.event.inputs.number }}" | python3 palindrome.py
         id: palindrome_check
 
       - name: Display Outputs
