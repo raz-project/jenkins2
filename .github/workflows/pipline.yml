@@ -25,6 +25,7 @@ jobs:
       - name: Show Israel Date and Time
         run: |
           TZ="Asia/Jerusalem" date
+        id: date_time # Store output for later use
 
       - name: Print Hello World
         run: echo "Hello, GitHub Actions!" # This is just the command
