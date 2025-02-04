@@ -14,7 +14,10 @@ jobs:
         uses: actions/checkout@v4 # It just does git clone but for the repo that you are currently using
 
       - name: Ping Google
-        run: ping  timeout 5 ping google.com
+        run: ping  ping -c 4 google.com # Pings Google 4 times
+
+      - name: List Files and Directories
+        run: ls -la # Lists all files and directories in the workspace
 
       - name: Print Hello World
         run: echo "Hello, GitHub Actions!" # This is just the command
