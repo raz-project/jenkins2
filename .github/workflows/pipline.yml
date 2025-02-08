@@ -57,7 +57,10 @@ jobs:
       - name: Set up Docker
         run: |
           sudo apt-get update
-          sudo apt-get install -y docker.io # Installs Docker on the Ubuntu environment
+          sudo apt-get remove -y containerd # Remove existing conflicting containerd
+          sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+          curl -fsSL https://get.docker.com -o get-docker.sh
+          sudo sh get-docker.sh # Installs Docker using the official Docker script
 
       - name: Run Docker Hello World
         run: docker run hello-world # Runs the hello-world Docker image
