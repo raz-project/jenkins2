@@ -54,6 +54,17 @@ jobs:
           echo "RESULT=$RESULT" >> $GITHUB_ENV
         id: palindrome_check
 
+      - name: Set up Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker.io # Installs Docker on the Ubuntu environment
+
+      - name: Run Docker Hello World
+        run: docker run hello-world # Runs the hello-world Docker image
+
+      - name: Verify Docker Version
+        run: docker -v # Verifies the Docker version installed
+
       - name: Display Outputs
         run: |
           echo "Israel Date and Time: ${{ steps.date_time.outputs.stdout }}"
