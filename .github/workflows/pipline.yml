@@ -75,3 +75,15 @@ jobs:
 
       - name: Print Hello World
         run: echo "Hello, GitHub Actions!" # This is just the command
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Check Docker Version
+        run: docker --version
+
+      - name: List Docker Volumes
+        run: docker volume ls
+
+      - name: Prune Unused Docker Volumes
+        run: docker volume prune -f
