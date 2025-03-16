@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "rsrs88/jenkins2"
+        DOCKER_IMAGE = "rsrs88/jenkins"
         DOCKER_TAG = "latest"
         REGISTRY_CREDENTIALS = 'docker-hub-credentials'  // Jenkins credentials ID
     }
